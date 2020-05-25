@@ -9,7 +9,7 @@ img_modified = cv2.add(img_recolored, img_mask)
 img_gray = cv2.cvtColor(img_modified, cv2.COLOR_BGR2GRAY)
 
 classifier = cv2.CascadeClassifier("E:/Programming/opencv-4.3.0/data/haarcascades/haarcascade_frontalface_alt2.xml")
-faces = classifier.detectMultiScale(img_gray)
+faces = classifier.detectMultiScale(img_gray, minNeighbors=10)
 for face in faces:
     x, y, w, h = face
     cv2.rectangle(img_modified, (x, y), (x+w, y+h), (255, 0, 0), 20)
